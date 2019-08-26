@@ -1,3 +1,9 @@
+/*!
+ * Gerador de Battleship puzzles 
+ * Turmna de LP1, 2019.2
+ * @date August, 27th.
+ * @author Thyall
+ */
 #include "bibi2.h"
 #include <vector>
 #include <iostream>
