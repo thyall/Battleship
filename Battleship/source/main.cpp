@@ -32,10 +32,10 @@ void message( std::string msg="" )
     std::cout <<
 "   Usage: [<options>] <number_of_puzzles>\n" <<
 "   Program options are:\n" <<
-"        --rows <num>	Specify the number of rows for the matrix, with `<num>` in the range [10, 16 ]. The default value is 10.\n" <<
+"        --rows <num>	Specify the number of rows for the matrix, with `<num>` in the range [10,16]. The default value is 10.\n" <<
 "        --cols <num>	Specify the number of columns for the matrix, with `<num>` in the range [10,16]. The default value is 10.\n" <<
 "   Requested input is:\n" <<
-"       number_of_puzzles	The number of puzzles to be generated, in the range [1,100].\n";
+"       number_of_puzzles  The number of puzzles to be generated, in the range [1,100].\n";
 
     exit( 0 );
 }
