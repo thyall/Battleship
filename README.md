@@ -16,7 +16,7 @@ ou apenas o comando **_make_**. Para gerar os puzzles o usuario pode apenas dar 
 * **_./bpg 10_** aqui ele gera 10 puzzles de dimensões padrão (10x10).
 
 ### Limitações:
-- O programa não gera tabuleiros menores que 9x9 devido ao uso da biblioteca **_ramdom_** para mais estudos você pode olhar aqui as [referências](http://www.cplusplus.com/reference/random/). Acredito que com dimensões menores que 9x9 nessa forma de abordagem, o problema faz com que a gerações de coordenadas vá para o infinito, uma boa possibilidade de mudança é que para tabuleiros menores que 10x10 as funções geradores de barcos sejam feitas de forma sistematica e não randomicas.
+- O programa não gera tabuleiros menores que 9x9 devido ao uso da biblioteca **_ramdom_** para mais estudos você pode olhar aqui as [referências](http://www.cplusplus.com/reference/random/). Acredito que com dimensões menores que 9x9 nessa forma de abordagem, o problema faz com que a gerações de coordenadas vá para o infinito,pois não só os barcos como também suas bordas preenchem o tabuleiro logo a probabilidade de achar uma coordrnada correta para o barco se torna menor para cada barco plotado uma boa possibilidade de mudança é que para tabuleiros menores que 10x10 as funções geradores de barcos sejam feitas de forma sistematica e não randomicas.
 
 ## Pré requisitos & guia de instalação
 - A distribuição utilizada pelo projeto foi [Ubuntu 18.04 LTS](https://ubuntu.com/download/desktop).
