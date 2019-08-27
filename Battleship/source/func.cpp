@@ -17,9 +17,11 @@ void criar_tabuleiro(int max_x, int max_y,char **matriz, int n, int m)
 
 void print_tabu_terminal(char **matriz, int n, int m)
 {
-   for(int i= 1; i < n+1; ++i){
-    std::cout << i << ' ';
+  for(int i= 1; i < n+1; ++i) //printando os numeros de linhas e colunas
+  {
+   std::cout << i << ' ';
   }
+
   std::cout << std::endl;
   for (int i = 1; i < n+1; ++i)
   {
@@ -34,26 +36,26 @@ void print_tabu_terminal(char **matriz, int n, int m)
 
 int gera_coord(int lim, char type_barco)
 {
-	int x;
+  int x;
   //nessa linha estou colocando o intervalo de quanto até quanto eu quero que o varie
   // estou usando n - 4, porque n é um dos lados sendo passado da matriz menos o tamanho do Batleship, para não correr o risco 
-  // o risco de "passar" da matriz*/ 
+  // o risco de "passar" da matriz
 
   std::random_device rd;
  
- 	std::mt19937_64 gen(rd()); 	// esse objeto deixa o ramdom mais "pseudo aleatorio possivel"
+  std::mt19937_64 gen(rd());// esse objeto deixa o ramdom mais "pseudo aleatorio possivel"
 
   if(type_barco == 'B')
   {  	
   	std::uniform_int_distribution < unsigned long long > var(1,lim - 3);
 		x = var(gen);
-	}
+  }
 
-	else if(type_barco == 'D')
-	{		
-		std::uniform_int_distribution < unsigned long long > var(1,lim-2);
-		x = var(gen);
-	}
+  else if(type_barco == 'D')
+  {		
+	std::uniform_int_distribution < unsigned long long > var(1,lim-2);
+	x = var(gen);
+  }
 
   else if(type_barco == 'C')
   {
@@ -69,7 +71,7 @@ int gera_coord(int lim, char type_barco)
   	return x;
 }
 
-int gera_v_ou_h()
+int gera_v_ou_h()// gera randomicamente e retorna 1 ou 2 se for 1 é horizontal e 2 para vertical
 {
  
  int posi;
@@ -88,20 +90,18 @@ int gera_v_ou_h()
 void plotar_bt(char **matriz, int n, int m)
 {
 	int coord_X, coord_y, coord_vertical_horizontal;	
-
+	//gerando coordenadas e direção
   	coord_X = gera_coord(n, 'B');
-
   	coord_y = gera_coord(m, 'B');
-
   	coord_vertical_horizontal = gera_v_ou_h();
 
   	//1 para horizontal 2 para vertical
   	if(coord_vertical_horizontal == 1)
   	{
-  		matriz[coord_X][coord_y] = 'B';
-  		matriz[coord_X][coord_y + 1] = 'B';
-  		matriz[coord_X][coord_y + 2] = 'B';
-  		matriz[coord_X][coord_y + 3] = 'B';
+  	  matriz[coord_X][coord_y] = 'B';
+  	  matriz[coord_X][coord_y + 1] = 'B';
+  	  matriz[coord_X][coord_y + 2] = 'B';
+  	  matriz[coord_X][coord_y + 3] = 'B';
 
       //agora marcando as areas ao redor do batleship
       matriz[coord_X +1][coord_y] = '+';
@@ -124,12 +124,12 @@ void plotar_bt(char **matriz, int n, int m)
 
   	}
 
-  	else
+  	else//se for 2 será vertical
   	{
-  		matriz[coord_X][coord_y] = 'B';
-  		matriz[coord_X + 1][coord_y ] = 'B';
-  		matriz[coord_X + 2][coord_y ] = 'B';
-  		matriz[coord_X + 3][coord_y] = 'B';
+  	  matriz[coord_X][coord_y] = 'B';
+  	  matriz[coord_X + 1][coord_y ] = 'B';
+  	  matriz[coord_X + 2][coord_y ] = 'B';
+  	  matriz[coord_X + 3][coord_y] = 'B';
 
       //agora marcando as areas ao redor do batleship
       matriz[coord_X][coord_y+1] = '+';
@@ -150,19 +150,17 @@ void plotar_bt(char **matriz, int n, int m)
       matriz[coord_X+4][coord_y] = '+';
       matriz[coord_X+4][coord_y+1] = '+';  
   	}
-    print_arq_armada('B',coord_X, coord_y, coord_vertical_horizontal);
+    print_arq_armada('B',coord_X, coord_y, coord_vertical_horizontal);//enviando as coordenadas para um arquivo txt no formato armada
 }
 
 void plotar_destroyer(char **matriz, int n, int m)
 {
-	int coord_X, coord_y, coord_vertical_horizontal;
+  int coord_X, coord_y, coord_vertical_horizontal;
 
   bool l;
-
- 	coord_X = gera_coord(n, 'D');
-
+  //gerando coordenadas
+  coord_X = gera_coord(n, 'D');
   coord_y = gera_coord(m, 'D');
-
   coord_vertical_horizontal = gera_v_ou_h();
 
   l = false;
@@ -193,7 +191,8 @@ void plotar_destroyer(char **matriz, int n, int m)
         matriz[coord_X][coord_y+3] = '+';
         matriz[coord_X+1][coord_y+3] = '+';
 
-        l = true;       
+        l = true;//se conseguir colocar o barco l recebe true e sai do loop 
+                 //senão novas coordendasserão geradas    
       }
 
       else//pegando nova posiçao
@@ -207,7 +206,7 @@ void plotar_destroyer(char **matriz, int n, int m)
     }
   }
 
-  else//para vertical
+  else//para vertical mesma logica da anterior só que para um novo sentido
   {
     while(l == false)
     {
@@ -247,7 +246,7 @@ void plotar_destroyer(char **matriz, int n, int m)
         } 
       }            
     }
-  print_arq_armada('D',coord_X, coord_y, coord_vertical_horizontal); 
+print_arq_armada('D',coord_X, coord_y, coord_vertical_horizontal);//enviando as coordenados do destroyer para o arquivo
 }
 
 void plotar_cruser(char **matriz, int n, int m)
@@ -255,11 +254,9 @@ void plotar_cruser(char **matriz, int n, int m)
   int coord_X, coord_y, coord_vertical_horizontal;
 
   bool l;
-
+  //gerando novas coordenadas e direção
   coord_X = gera_coord(n, 'C');
-
   coord_y = gera_coord(m, 'C');
-
   coord_vertical_horizontal = gera_v_ou_h();
 
   l = false;
@@ -329,14 +326,14 @@ void plotar_cruser(char **matriz, int n, int m)
 
       else//se n conseguir pega nova posição
       {
-          coord_X = gera_coord(n, 'C');
-          coord_y = gera_coord(m, 'C');
-          coord_vertical_horizontal = gera_v_ou_h();
-          l = false;
+        coord_X = gera_coord(n, 'C');
+        coord_y = gera_coord(m, 'C');
+        coord_vertical_horizontal = gera_v_ou_h();
+        l = false;
       }
     }            
   }
-  print_arq_armada('C',coord_X, coord_y, coord_vertical_horizontal);    
+ print_arq_armada('C',coord_X, coord_y, coord_vertical_horizontal);    
 }
 
 void plotar_sub(char **matriz, int n, int m)
@@ -345,21 +342,22 @@ void plotar_sub(char **matriz, int n, int m)
 
   bool l;
   
-    coord_X = gera_coord(n, 'S');
+  coord_X = gera_coord(n, 'S');
 
-    coord_y = gera_coord(m, 'S');
+  coord_y = gera_coord(m, 'S');
 
-    l = false;
+  l = false;
 
     while(l == false)
     {
     	if(matriz[coord_X][coord_y] == '~')
     	{
       		matriz[coord_X][coord_y] = 'S';
-          // agora marcando as areas ao redor do submarino
+
+            //agora marcando as areas ao redor do submarino
       		matriz[coord_X][coord_y-1] = '+';
       		matriz[coord_X+1][coord_y] = '+';
-     		  matriz[coord_X+1][coord_y+1] = '+';
+     	    matriz[coord_X+1][coord_y+1] = '+';
      	  	matriz[coord_X+1][coord_y-1] = '+';
       		matriz[coord_X][coord_y+1] = '+';
       		matriz[coord_X-1][coord_y+1] = '+';
@@ -371,14 +369,13 @@ void plotar_sub(char **matriz, int n, int m)
     	else
     	{
     		coord_X = gera_coord(n, 'S');
-
-        coord_y = gera_coord(m, 'S');
-
-        l =false;
+            coord_y = gera_coord(m, 'S');
+            l =false;
     	}
     }
-   print_arq_armada('S',coord_X, coord_y, 2);
+ print_arq_armada('S',coord_X, coord_y, 2);
 }
+
 void print_arq_armada(char type, int n, int m, int vetor)
 {
   char direcao;

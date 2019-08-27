@@ -19,7 +19,7 @@
 #define MIN_COL 10
 #define MIN_ROW 10
 #define MIN_NPUZZLE 1
-// valores padrao
+//valores padrao
 #define DEF_COL 10
 #define DEF_ROW 10
 #define DEF_NPUZZLE MIN_NPUZZLE
