@@ -15,6 +15,8 @@ BPG: func.o main.o
 	@echo "Para mais informações digite o comando --> ./BPG\n"
 	@echo "#####################################################################"
 	@echo "#####################################################################\n"
+	@mv *.o build/ #enviando os .o para pasta objects
+	
 # o -I include diz que a biblioteca está nessa pasta
 
 main.o: source/main.cpp
@@ -26,7 +28,7 @@ func.o: source/func.cpp
 	@$(CC) $(CPPFLAGS) -std=c++11 -c -Iinclude source/func.cpp
 	@echo "Instalando..."
 clean:
-	@rm -rf *o BPG
+	@rm -rf BPG
 	@echo "Diretorio limpo"
 
 

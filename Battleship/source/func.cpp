@@ -63,7 +63,7 @@ int gera_coord(int lim, char type_barco)
     x = var(gen);
   }
 
-   else if(type_barco == 'S')
+  else if(type_barco == 'S')
   {    
     std::uniform_int_distribution < unsigned long long > var(1,lim);
     x = var(gen);
@@ -246,7 +246,7 @@ void plotar_destroyer(char **matriz, int n, int m)
         } 
       }            
     }
-print_arq_armada('D',coord_X, coord_y, coord_vertical_horizontal);//enviando as coordenados do destroyer para o arquivo
+    print_arq_armada('D',coord_X, coord_y, coord_vertical_horizontal);//enviando as coordenados do destroyer para o arquivo
 }
 
 void plotar_cruser(char **matriz, int n, int m)
