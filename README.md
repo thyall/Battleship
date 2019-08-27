@@ -6,13 +6,13 @@ Battleship puzzles board generator
 - Esse programa tem como objetivo geração de puzzles do jogo Batalha Naval onde você poderá aprender e entender um pouco das regras desse jogo aqui nesse [site](https://en.wikipedia.org/wiki/Battleship_(puzzle)). Esse programa irá gerar de 0 a 100 puzzles e os seus tabuleiros terão dimensões compreendidas de 10x10 a 16x16.
 
 ## Programa & limitações
-- Para poder rodar o codigo basta apenas o comando de **_g++ -Wall -std=c++11 main.cpp func.cpp -bpg_** como linha de comando no seu terminal
-ou apenas o comando **_make_**. Para gerar os puzzles o usuario pode apenas dar o comando **_./bpg 10 -r 10 -c 10_**, nesse exemplo o programa irá gerar 10 puzzles de dimensão 10 por 10, não colocando as linhas e colunas "-r 10 e -c 10" o programa por padrão irão gerar tabuleiros 10x10.
+- Para poder rodar o codigo basta apenas o comando de **_g++ -Wall -std=c++11 -Iinclude source/main.cpp source/func.cpp_** como linha de comando no seu terminal
+ou apenas o comando **_make_**. Para gerar os puzzles o usuario pode apenas dar o comando **_./bpg 10 -r 10 -c 10_**, nesse exemplo o programa irá gerar 10 puzzles de dimensão 10 por 10, não colocando as linhas e colunas "-r 10 e -c 10" o programa por padrão irão gerar tabuleiros 10x10. Na pasta "datas" terá um arquivo armada.txt onde nele tera as coordenadas dos barcos gerados, na pasta "source" terá os arquivos _.cpp_ e na pasta "include" terá o arquivo _.h_, por fim um otimo comando no terminal para limpar seu diretório é o comando **_make clean_**.
 
 ### exemplos de comandos:
-* **_./bpg 10 -r 10 -c 10_**
-* **_./bpg 50 -r 10 -c 10_**
-* **_./bpg 20 -r 15 -c 15_**
+* **_./bpg 10 -r 10 -c 10_** aqui ele gera 10 puzzles de dimesões (10x10)
+* **_./bpg 50 -r 10 -c 10_** aqui ele gera 50 puzzles de dimesões (10x10)
+* **_./bpg 20 -r 15 -c 15_** aqui ele gera 20 puzzles de dimesões (15x15)
 * **_./bpg 10_** aqui ele gera 10 puzzles de dimensões padrão (10x10).
 
 ### Limitações:
